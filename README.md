@@ -1,15 +1,17 @@
-# OpenWhisk 101 - Polyglot Development with JavaScript and Docker
+# Polyglot IBM Cloud Functions with JavaScript and Docker
 
-Simple demo showing OpenWhisk actions, triggers, and rules. Created for the [Build a cloud native app with Apache OpenWhisk webinar](https://developer.ibm.com/tv/build-a-cloud-native-app-with-apache-openwhisk/).
+> **Note**: This demo application was built in 2016. The concepts are the same, but there are alternative approaches for [binding Cloudant](https://github.com/IBM/openwhisk-cloudant-trigger) to the Cloud Functions environment and [another way to use Docker](https://www.ibm.com/blogs/bluemix/2017/01/docker-bluemix-openwhisk/) that doesn't require you to store action code in the public Docker Hub.
 
-A demo highlighting OpenWhisk polyglot application development. This example shows how to write actions in both JavaScript and Docker, respond to database triggers, and invoke actions in a workflow asynchronously.
+Simple demo showing IBM Cloud Functions (powered by Apache OpenWhisk) programming with actions, triggers, and rules. Created for the [Build a cloud native app with Apache OpenWhisk webinar](https://developer.ibm.com/tv/build-a-cloud-native-app-with-apache-openwhisk/).
 
-When an image is added to a Cloudant database, this event triggers the JavaScript action to download the file and resize it. It also invokes an optical character recognition library packaged as an action in Docker.
+This example shows how to write actions in both JavaScript and Docker, respond to database triggers, and invoke actions in a workflow asynchronously.
+
+When an image is added to a Cloudant database, this event triggers the JavaScript action to download the file and resize it. It also invokes an optical character recognition (OCR) library packaged as an action in Docker.
 
 ![High level diagram](images/demo-2.png)
 
 1. Image uploaded to Cloudant
-2. Trigger fired in OpenWhisk
+2. Trigger fired in IBM Cloud Functions
 3. JavaScript action parses image metadata and transforms image
 4. Docker action parses image with OCR
 5. Extracted info stored back to Cloudant
@@ -36,11 +38,11 @@ After you've installed the `wsk` binary, created a Cloudant service instance, an
 
 ### Install the `wsk` CLI from Bluemix
 
-After registering for [Bluemix](http://bluemix.net/), navigate to the "[OpenWhisk](https://console.ng.bluemix.net/openwhisk/)" section. You'll find it in the left navigation, under the three horizontal bar (hamburger) icon.
+After registering for the [IBM Cloud](http://bluemix.net/), navigate to the "[Functions](https://console.ng.bluemix.net/openwhisk/)" section. You'll find it in the left navigation, under the three horizontal bar (hamburger) icon.
 
-Click the "Download OpenWhisk CLI" button and place the `wsk` binary in your path, such as in `~/bin`. Open a terminal and set your namespace and authorization as shown in step 2\. Then create your first action in step 3 to validate your setup.
+Click the "Download CLI" button and place the `wsk` binary in your path, such as in `~/bin`. Open a terminal and set your namespace and authorization as shown in step 2\. Then create your first action in step 3 to validate your setup.
 
-### Set up Cloudant database in Bluemix
+### Set up Cloudant database in the IBM Cloud
 
 Under the "Services" option in the left navigation, choose "Data & Analytics", then view the Services portfolio and provision an instance of Cloudant. Save the "Service Credentials" information to `local.env` and launch the dashboard.
 
